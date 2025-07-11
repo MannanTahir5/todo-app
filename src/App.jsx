@@ -28,6 +28,10 @@ function App() {
       setEditingId(null);
     } else {
       // Add new task
+      if (!task.trim()) {
+        alert('Please enter a task.');
+        return
+      }; 
       const newTask = {
         id: Date.now(),
         text: task,
@@ -69,7 +73,7 @@ function App() {
             onChange={(e) => setTask(e.target.value)}
           />
           <button
-            className={`px-4 py-2 rounded text-sky-700 ${editingId ? 'bg-yellow-500 hover:bg-yellow-600' : 'bg-sky-500 hover:bg-sky-600'}`}
+            className={`px-4 py-2 rounded text-black ${editingId ? 'bg-sky-200 hover:bg-sky-300' : 'bg-gray-300 hover:bg-gray-200'}`}
             onClick={addOrUpdateTask}
           >
             {editingId ? 'Update' : 'Add'}
@@ -98,7 +102,7 @@ function App() {
 
               <button
                 onClick={() => editTodo(todo.id)}
-                className="text-sky-500 hover:text-sky-700"
+                className="text-black hover:text-gray-700 px-2 rounded border-1"
               >
                 Edit
               </button>
